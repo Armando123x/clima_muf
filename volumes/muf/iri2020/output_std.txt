@@ -1,0 +1,32 @@
+ jmag(=0/1,geog/geom),lati/deg,long/deg
+ year(yyyy),mmdd(or -ddd),iut(=0/1,LT/UT),hour
+ height/km
+ variable? (1/2/../8 for height/lat/long/year/month/day/day of year/hour)
+ begin, end, and stepsize for the selected variable
+ output-option (if variable=height then choose 0, 3,4, or 5)
+ (enter 0 for standard table of IRI parameters)
+ (enter 1 for list of peak heights and densities)
+ (enter 2 for plasma frequencies, B0, M3000, valley, width and depth,)
+ (enter 3 for 6 parameters of your choice)
+ (enter 4 for D-region models at 60,65,..,110 km)
+ (enter 5 special test output)
+ upper boundary in km for TEC integration (0 for no TEC)
+ lower boundary in km for TEC integration
+ Options: t(rue) or f(alse)
+ Enter 0 to use standard or 1 to enter your own
+  
+  
+  
+*** IRI parameters are being calculated ***
+Ne: IRI-cor2 for Topside
+Ne, foF2: URSI model is used.
+Ne: B0,B1-ABT-2009
+Ne, foF1: probability function used.
+Ne, D: IRI1990
+Ne, foF2: storm model included
+Ion Com.: RBV-10 & TBT-15
+Te: TBT-2012 model
+Auroral boundary model off
+Ne, foE: storm model off
+ APF_ONLY: Date is outside range of F10.7D indices file (F10.7D = F10.7_81 = F10.7RM12).
+ Enter 0 to exit or 1 to generate another profile?

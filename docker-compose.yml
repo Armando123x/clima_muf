@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  clima-muf:
+    build: ./volumes/muf/
+    volumes:
+      - './volumes/muf/iri2020:/iri2020'
+      - './volumes/muf/images:/images'
+      - './volumes/muf/scripts:/scripts'
+
+    working_dir: /iri2020
+    command: ["bash",'/scripts/set.bash']
+    labels:
+      ofelia.enabled: "true"
+      ofelia.job-exec.refresh_pgw.command: "python /scripts/refresh_indices.py"
+      ofelia.job-exec.refresh_pgw.schedule: "@every 12h"
+      ofelia.job-exec.refresh_pgw.no-overlap: "true"
+
+      ofelia.job-exec.update_images.command: "python /scripts/update_images.py"
+      ofelia.job-exec.update_images.schedule: "@every 6h"
+      ofelia.job-exec.update_images.no-overlap: "true"
+
+
+  ofelia-cron:
+    container_name: 'ofelia-cron'
+    image: mcuadros/ofelia:v0.3.6
+    command: daemon --docker
+    depends_on:
+      - clima-muf
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "12m"
