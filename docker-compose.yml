@@ -2,14 +2,14 @@ version: '3'
 
 services:
   clima-muf:
-    build: ./volumes/muf/
+    build: ./volumes/
     volumes:
       - './volumes/muf/iri2020:/iri2020'
       - './volumes/muf/images:/images'
       - './volumes/muf/scripts:/scripts'
 
-    working_dir: /iri2020
-    command: ["bash",'/scripts/set.bash']
+  
+    command: ["bash",'/iri2020/set.bash']
     labels:
       ofelia.enabled: "true"
       ofelia.job-exec.refresh_pgw.command: "python /scripts/refresh_indices.py"

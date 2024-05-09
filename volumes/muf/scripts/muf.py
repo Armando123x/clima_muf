@@ -21,7 +21,7 @@ from math import *
 from io import BytesIO
 from pathlib import Path
 from multiprocessing import Pool,cpu_count
-from .others import *
+from others import *
 from scipy.optimize import curve_fit
 from matplotlib.offsetbox import AnchoredText
 from dateutil.relativedelta import relativedelta
